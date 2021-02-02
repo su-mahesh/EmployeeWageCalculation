@@ -7,12 +7,13 @@ namespace EmployeeWageComputationNameSpace
         private const float EmpWagePerHour = 20;
         private const int FullTime_WorkingHrs_PerDay = 8;
         private const int PartTime_WorkingHrs_PerDay = 4;
+        private const int MAX_WORKING_HRS = 100;
+        private const int MAX_WORKING_DAYS = 20;
         private const int IS_FULL_TIME = 1;
         private const int IS_PART_TIME = 2;
         private const int IS_ABSENT = 0;
-        private const int Num_WorkingDays_PerMonth = 20;
-        private float EmpMonthlyWage = 0;
         float EmpDailyWage = 0;
+        private float TotalWage = 0;
 
         private int IsEmployeePresent() {
             return new Random().Next() % 3;
@@ -21,25 +22,27 @@ namespace EmployeeWageComputationNameSpace
         public void CalculateWage() {
             
             int DayNumber = 1;
-            int EmpWorkinhHrs = 0;
-            while (DayNumber <= Num_WorkingDays_PerMonth) {
+            int EmpWorkinghHrs = 0;
+            int TotalWorkingHrs = 0;
+            while (DayNumber <= MAX_WORKING_DAYS && TotalWorkingHrs <= MAX_WORKING_HRS) {
                 switch (IsEmployeePresent()) {
                     case IS_ABSENT:
-                        EmpWorkinhHrs = 0;
+                        EmpWorkinghHrs = 0;
                         break;
                     case IS_PART_TIME:
-                        EmpWorkinhHrs = PartTime_WorkingHrs_PerDay;
+                        EmpWorkinghHrs = PartTime_WorkingHrs_PerDay;
                         break;
                     case IS_FULL_TIME:
-                        EmpWorkinhHrs = FullTime_WorkingHrs_PerDay;
+                        EmpWorkinghHrs = FullTime_WorkingHrs_PerDay;
                         break;
                 }
-                EmpDailyWage = EmpWorkinhHrs * EmpWagePerHour;
+                EmpDailyWage = EmpWorkinghHrs * EmpWagePerHour;
 
-                EmpMonthlyWage += EmpDailyWage;
+                TotalWage += EmpDailyWage;
                 DayNumber++;
+                TotalWorkingHrs += EmpWorkinghHrs;
             }
-            Console.WriteLine("Employee monthly wage :"+ EmpMonthlyWage);
+            Console.WriteLine("Total working days :"+ (DayNumber-1) +"\nTotal working hours :"+ TotalWorkingHrs + "\nTotal employee wage :"+ TotalWage);
         }
 
         static void Main(string[] args)
