@@ -13,10 +13,16 @@ namespace EmployeeWageComputationNameSpace
 
         public void CalculateDailyWage() {
             float EmpDailyWage = 0;
-            if (IsEmployeePresent() == 1)
-                EmpDailyWage = FullTimeWorkingHrsPerDay * EmpWagePerHour;
-            else if (IsEmployeePresent() == 2)
-                EmpDailyWage = PartTimeWorkingHrsPerDay * EmpWagePerHour;
+
+            switch (IsEmployeePresent()) {
+                case 1:
+                    EmpDailyWage = FullTimeWorkingHrsPerDay * EmpWagePerHour;
+                    break;
+                case 2:
+                    EmpDailyWage = PartTimeWorkingHrsPerDay * EmpWagePerHour;
+                    break;
+            }
+
             Console.WriteLine("Employee Daily :"+EmpDailyWage);
         }
 
