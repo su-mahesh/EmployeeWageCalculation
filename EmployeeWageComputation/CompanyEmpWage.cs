@@ -13,7 +13,7 @@ namespace EmployeeWageComputationNameSpace
         public int MAX_WORKING_HRS = 100;
         public int MAX_WORKING_DAYS = 20;
         public float TotalWage = 0;
-        
+        public Dictionary<int, float> EmpDailyWage = new Dictionary<int, float>();
         public CompanyEmpWage(String CompanyName, int EmpWagePerHour, int FullTime_WorkingHrs_PerDay, int PartTime_WorkingHrs_PerDay, int MAX_WORKING_HRS, int MAX_WORKING_DAYS)
         {
             this.CompanyName = CompanyName;

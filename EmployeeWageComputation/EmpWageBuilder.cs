@@ -30,7 +30,7 @@ namespace EmployeeWageComputationNameSpace
             try
             {
                 if (!Companies.ContainsKey(CompanyName.ToLower()))
-                    throw new ArgumentNullException("company don't exist");
+                    throw new ArgumentNullException("company doesn't exist");
                 Companies.TryGetValue(CompanyName.ToLower(), out CompanyEmpWage company);
 
                 while (DayNumber <= company.MAX_WORKING_DAYS && TotalWorkingHrs <= company.MAX_WORKING_HRS)
@@ -48,6 +48,7 @@ namespace EmployeeWageComputationNameSpace
                             break;
                     }
                     EmpDailyWage = EmpWorkinghHrs * company.EmpWagePerHour;
+                    company.EmpDailyWage.Add(DayNumber, EmpDailyWage);
                     TotalWage += EmpDailyWage;
                     DayNumber++;
                     TotalWorkingHrs += EmpWorkinghHrs;
