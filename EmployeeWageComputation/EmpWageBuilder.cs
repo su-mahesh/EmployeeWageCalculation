@@ -60,13 +60,13 @@ namespace EmployeeWageComputationNameSpace
             catch (Exception e) {
                 Console.WriteLine(e.Message);
             }
-            }
+        }
 
         static void Main(string[] args)
         {        
-            Console.WriteLine("Welcome to Employee Wage Computation");
-           
+            Console.WriteLine("Welcome to Employee Wage Computation");    
             IEmpWageComputation employeeWageComputation = new EmployeeWageComputation();
+
             employeeWageComputation.AddCompany("TATA", 20, 8, 4, 100, 20);
             employeeWageComputation.AddCompany("Mahindra", 30, 8, 4, 100, 20);
             employeeWageComputation.CalculateEmpWage("tata");
