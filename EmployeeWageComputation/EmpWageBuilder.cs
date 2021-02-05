@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EmployeeWageComputationNameSpace
 {
-    class EmployeeWageComputation
+    class EmployeeWageComputation : IEmpWageComputation
     {
         private const int IS_FULL_TIME = 1;
         private const int IS_PART_TIME = 2;
@@ -12,7 +12,7 @@ namespace EmployeeWageComputationNameSpace
         private float TotalWage = 0;
         private Dictionary<String, CompanyEmpWage> Companies = new Dictionary<String, CompanyEmpWage>();
 
-        private void AddCompany(String CompanyName, int EmpWagePerHour, int FullTime_WorkingHrs_PerDay, int PartTime_WorkingHrs_PerDay, int MAX_WORKING_HRS, int MAX_WORKING_DAYS)
+        public void AddCompany(String CompanyName, int EmpWagePerHour, int FullTime_WorkingHrs_PerDay, int PartTime_WorkingHrs_PerDay, int MAX_WORKING_HRS, int MAX_WORKING_DAYS)
         {
             CompanyEmpWage company = new CompanyEmpWage(CompanyName.ToLower(), EmpWagePerHour, FullTime_WorkingHrs_PerDay, PartTime_WorkingHrs_PerDay, MAX_WORKING_HRS, MAX_WORKING_DAYS);
             Companies.Add(CompanyName.ToLower(), company);
@@ -66,7 +66,7 @@ namespace EmployeeWageComputationNameSpace
         {        
             Console.WriteLine("Welcome to Employee Wage Computation");
            
-            EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation();
+            IEmpWageComputation employeeWageComputation = new EmployeeWageComputation();
             employeeWageComputation.AddCompany("TATA", 20, 8, 4, 100, 20);
             employeeWageComputation.AddCompany("Mahindra", 30, 8, 4, 100, 20);
             employeeWageComputation.CalculateEmpWage("tata");

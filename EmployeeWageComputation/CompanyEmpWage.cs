@@ -6,7 +6,7 @@ namespace EmployeeWageComputationNameSpace
 {
     class CompanyEmpWage
     {
-        public String CompanyName;
+        public string CompanyName;
         public float EmpWagePerHour = 20;
         public int FullTime_WorkingHrs_PerDay = 8;
         public int PartTime_WorkingHrs_PerDay = 4;
