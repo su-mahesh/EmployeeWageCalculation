@@ -8,6 +8,6 @@ namespace EmployeeWageComputationNameSpace
     {
         void CalculateEmpWage(string CompanyName);
         void AddCompany(String CompanyName, int EmpWagePerHour, int FullTime_WorkingHrs_PerDay, int PartTime_WorkingHrs_PerDay, int MAX_WORKING_HRS, int MAX_WORKING_DAYS);
-
+        float GetTotalEmpWage(String CompanyName);
     }
 }

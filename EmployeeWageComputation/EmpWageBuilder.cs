@@ -53,9 +53,9 @@ namespace EmployeeWageComputationNameSpace
                     DayNumber++;
                     TotalWorkingHrs += EmpWorkinghHrs;
                 }
-                company.TotalWage = TotalWage;
+                company.TotalEmpWage = TotalWage;
                 Console.WriteLine("\nCompany name: "+CompanyName);
-                Console.WriteLine("Total working days :" + (DayNumber - 1) + "\nTotal working hours :" + TotalWorkingHrs + "\nTotal employee wage :" + company.TotalWage);
+                Console.WriteLine("Total working days :" + (DayNumber - 1) + "\nTotal working hours :" + TotalWorkingHrs + "\nTotal employee wage :" + company.TotalEmpWage);
 
             }
             catch (Exception e) {
@@ -70,8 +70,21 @@ namespace EmployeeWageComputationNameSpace
 
             employeeWageComputation.AddCompany("TATA", 20, 8, 4, 100, 20);
             employeeWageComputation.AddCompany("Mahindra", 30, 8, 4, 100, 20);
+            employeeWageComputation.AddCompany("Infy", 25, 8, 4, 100, 20);
             employeeWageComputation.CalculateEmpWage("tata");
             employeeWageComputation.CalculateEmpWage("Mahindra");
-        } 
+            employeeWageComputation.CalculateEmpWage("infy");
+
+            Console.WriteLine("\nMaindra total employee wage:"+ employeeWageComputation.GetTotalEmpWage("Mahindra"));
+            
+        }
+
+        public float GetTotalEmpWage(string CompanyName)
+        {
+            if (Companies.ContainsKey(CompanyName.ToLower()))           
+                return Companies[CompanyName.ToLower()].TotalEmpWage;            
+            else 
+                return 0;
+        }
     }
 }
