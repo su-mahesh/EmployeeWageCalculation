@@ -10,11 +10,11 @@ namespace EmployeeWageComputationNameSpace
         private const int IS_ABSENT = 0;
         float EmpDailyWage = 0;
         private float TotalWage = 0;
-        private Dictionary<String, Company> Companies = new Dictionary<String, Company>();
+        private Dictionary<String, CompanyEmpWage> Companies = new Dictionary<String, CompanyEmpWage>();
 
         private void AddCompany(String CompanyName, int EmpWagePerHour, int FullTime_WorkingHrs_PerDay, int PartTime_WorkingHrs_PerDay, int MAX_WORKING_HRS, int MAX_WORKING_DAYS)
         {
-            Company company = new Company(CompanyName.ToLower(), EmpWagePerHour, FullTime_WorkingHrs_PerDay, PartTime_WorkingHrs_PerDay, MAX_WORKING_HRS, MAX_WORKING_DAYS);
+            CompanyEmpWage company = new CompanyEmpWage(CompanyName.ToLower(), EmpWagePerHour, FullTime_WorkingHrs_PerDay, PartTime_WorkingHrs_PerDay, MAX_WORKING_HRS, MAX_WORKING_DAYS);
             Companies.Add(CompanyName.ToLower(), company);
         }
 
@@ -31,7 +31,7 @@ namespace EmployeeWageComputationNameSpace
             {
                 if (!Companies.ContainsKey(CompanyName.ToLower()))
                     throw new ArgumentNullException("company don't exist");
-                Companies.TryGetValue(CompanyName.ToLower(), out Company company);
+                Companies.TryGetValue(CompanyName.ToLower(), out CompanyEmpWage company);
 
                 while (DayNumber <= company.MAX_WORKING_DAYS && TotalWorkingHrs <= company.MAX_WORKING_HRS)
                 {

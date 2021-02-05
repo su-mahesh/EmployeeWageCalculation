@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EmployeeWageComputationNameSpace
 {
-    class Company
+    class CompanyEmpWage
     {
         public String CompanyName;
         public float EmpWagePerHour = 20;
@@ -14,7 +14,7 @@ namespace EmployeeWageComputationNameSpace
         public int MAX_WORKING_DAYS = 20;
         public float TotalWage = 0;
         
-        public Company(String CompanyName, int EmpWagePerHour, int FullTime_WorkingHrs_PerDay, int PartTime_WorkingHrs_PerDay, int MAX_WORKING_HRS, int MAX_WORKING_DAYS)
+        public CompanyEmpWage(String CompanyName, int EmpWagePerHour, int FullTime_WorkingHrs_PerDay, int PartTime_WorkingHrs_PerDay, int MAX_WORKING_HRS, int MAX_WORKING_DAYS)
         {
             this.CompanyName = CompanyName;
             this.EmpWagePerHour = EmpWagePerHour;
